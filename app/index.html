@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+
+  <script>
+    window.$ = window.jQuery = require('./js/jquery.min.js');
+  </script>
+ 
+</head>
+<body>
+  <div id="loader" class="lds-dual-ring hidden overlay"></div>
+  <div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div id="logo"></div>
+      <div class="card">
+        <div class="card-body">
+          <h3 align="center" class="card-title">Myanmar Exchange Rate</h3>
+          <div class="card-text">
+
+            <button type="button" onclick="getRate('yoma')" class="btn btn-danger bank">YOMA</button>
+            <button type="button" onclick="getRate('kbz')" class="btn btn-primary bank">KBZ</button>
+            <button type="button" onclick="getRate('aya')" class="btn btn-danger bank">AYA</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  <br>
+  <span class="bankname"></span>
+  <div class="card">
+    <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+       <div class="panel panel-default">
+        <div class="panel-heading">Buy Rates</div>
+        <div class="panel-body">
+          <div class="table-responsive-sm exratedetailTlb">
+            <span id="buytable"></span>
+         </div>
+        </div>
+      </div>
+
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">Sell Rates</div>
+          <div class="panel-body">
+            <div class="table-responsive-sm exratedetailTlb"></div>
+              <span id="selltable"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="./js/app.js"></script>
+</body>
+</html>
