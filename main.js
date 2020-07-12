@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require('electron')
+var kill  = require('tree-kill');
 //Exchange rate backend API
 var jarPath = app.getAppPath() + '\\webcrawler-0.0.1-SNAPSHOT.jar';
 var child = require('child_process').spawn(
