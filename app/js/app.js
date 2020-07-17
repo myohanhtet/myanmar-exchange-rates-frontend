@@ -22,31 +22,67 @@ function getRate(params) {
               <h1><img width="90" style="padding:20px" src="./images/${data.bank}-logo.png" />${data.bank}</h1> Date: ${data.date}
             </div>
             <div class="col-md-8">
-            <form class="form-inline">
             
+            <div class="col-md-6">
+
+            <div class="panel panel-default">
+              <div class="panel-heading">Buy</div>
+              <div class="panel-body">
+              <form class="form-inline">
               <div class="form-group">
-              Buy: <select class="form-control txn-value"></select>
-                <label class="sr-only" for="inputValue">Amount</label>
-                <div class="input-group">
-                  <input type="number" class="form-control" id="inputValue" placeholder="Amount">
+                <div class="col-md-4">
+                  <select class="form-control buy-txn-value"></select>
                 </div>
-              </div>
-              
-              
+                <div class="col-md-8">
+                <label class="sr-only" for="buyinputValue">Amount</label>
+                <div class="input-group">
+                  <input type="number" class="form-control" id="buyinputValue" placeholder="Amount">
+                </div>
+                </div>
+               </div> 
             </form>
-            <span id="result"></span>
+            <span id="buyResult"></span>
+              </div>
+            </div>
+            </div>
+
+            <div class="col-md-6">
+
+            <div class="panel panel-default">
+              <div class="panel-heading">Sell</div>
+              <div class="panel-body">
+              <form class="form-inline">
+              <div class="form-group">
+                <div class="col-md-4">
+                  <select class="form-control sell-txn-value"></select>
+                </div>
+                <div class="col-md-8">
+                <label class="sr-only" for="sellinputValue">Amount</label>
+                <div class="input-group">
+                  <input type="number" class="form-control" id="sellinputValue" placeholder="Amount">
+                </div>
+                </div>
+               </div> 
+            </form>
+            <span id="sellResult"></span>
+              </div>
+            </div>
+
+            </div>
+            
             </div> <!-- /md-8 -->
-          </div> 
+          </div>
         </div>
       </div>`)
-      var option = "";
+      var optionBuy = "";
       $.each( data.buy, function( key, value ){
         buyTable += "<tr><th scope=\"row\"><figure class=\"currency-icon\"><img src=\"./images/"+key+"-logo.jpg\" /></figure><span>&nbsp;"+ key.toUpperCase()+ "</span></th><td class=\"buyrate\"><a href=\"#\">"+value+"</a></td></tr>"
-        option += "<option value=\" "+value+"\">"+ key.toUpperCase() +"</option>"
+        optionBuy += "<option value=\" "+value+"\">"+ key.toUpperCase() +"</option>"
       });
 
       $.each( data.sell, function( key, value ){
         sellTable += "<tr><th scope=\"row\"><figure class=\"currency-icon\"><img src=\"./images/"+key+"-logo.jpg\" /></figure><span>&nbsp;"+ key.toUpperCase()+ "</span></th><td class=\"buyrate\">"+value+"</td></tr>"
+        optionBuy += "<option value=\" "+value+"\">"+ key.toUpperCase() +"</option>"
       });
 
       buyTable += "</tbody></table>"
@@ -54,10 +90,15 @@ function getRate(params) {
 
       $("#buytable").append(buyTable)
       $("#selltable").append(sellTable)
-      $(".txn-value").append(option)
 
-      $("#inputValue").keyup(calc);
-      $(".txn-value").change(calc);
+      $(".buy-txn-value").append(optionBuy)
+      $(".sell-txn-value").append(optionBuy)
+
+      $("#buyinputValue").keyup(buycalc);
+      $(".buy-txn-value").change(buycalc);
+
+      $("#sellinputValue").keyup(sellcalc);
+      $(".sell-txn-value").change(sellcalc);
       
     },
     error: function(data) {
@@ -68,18 +109,23 @@ function getRate(params) {
       $('#loader').addClass('hidden')
     },
   });
-}
+};
 
-;
-
-function calc() {
-
-
-    let result =  parseFloat($('#inputValue').val(), 10) * parseFloat($(".txn-value").val(), 10);
+function buycalc() {
+    let result =  parseFloat($('#buyinputValue').val(), 10) * parseFloat($(".buy-txn-value").val(), 10);
 
     let resultStr = isNaN(result) ? 0 : result
 
-    $('#result').html("<h1>"+ resultStr +"<small> MMK</small></h1>");
+    $('#buyResult').html("<h1>"+ resultStr +"<small> MMK</small></h1>");
+}
+
+function sellcalc() {
+
+  let result =  parseFloat($('#sellinputValue').val(), 10) * parseFloat($(".sell-txn-value").val(), 10);
+
+  let resultStr = isNaN(result) ? 0 : result
+
+  $('#sellResult').html("<h1>"+ resultStr +"<small> MMK</small></h1>");
 
 
 }
