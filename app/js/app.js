@@ -16,64 +16,61 @@ function getRate(params) {
       
       $(".bankname").html(`
       <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-4">
-              <h1><img width="90" style="padding:20px" src="./images/${data.bank}-logo.png" />${data.bank}</h1> Date: ${data.date}
-            </div>
-            <div class="col-md-8">
-            
-            <div class="col-md-6">
-
-            <div class="panel panel-default">
-              <div class="panel-heading">Buy</div>
-              <div class="panel-body">
-              <form class="form-inline">
-              <div class="form-group">
+          <div class="panel-body">
+              <div class="row">
                 <div class="col-md-4">
-                  <select class="form-control buy-txn-value"></select>
+                    <h1><img width="90" style="padding:20px" src="./images/${data.bank}-logo.png" />${data.bank}</h1>
+                    Date: ${data.date}
                 </div>
                 <div class="col-md-8">
-                <label class="sr-only" for="buyinputValue">Amount</label>
-                <div class="input-group">
-                  <input type="number" class="form-control" id="buyinputValue" placeholder="Amount">
+                    <div class="col-md-6">
+                      <div class="panel panel-default">
+                          <div class="panel-heading">Buy</div>
+                          <div class="panel-body">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                  <div class="col-md-4">
+                                      <select class="form-control buy-txn-value"></select>
+                                  </div>
+                                  <div class="col-md-8">
+                                      <label class="sr-only" for="buyinputValue">Amount</label>
+                                      <div class="input-group">
+                                        <input type="number" class="form-control" id="buyinputValue" placeholder="Amount">
+                                      </div>
+                                  </div>
+                                </div>
+                            </form>
+                            <span id="buyResult"></span>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="panel panel-default">
+                          <div class="panel-heading">Sell</div>
+                          <div class="panel-body">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                  <div class="col-md-4">
+                                      <select class="form-control sell-txn-value"></select>
+                                  </div>
+                                  <div class="col-md-8">
+                                      <label class="sr-only" for="sellinputValue">Amount</label>
+                                      <div class="input-group">
+                                        <input type="number" class="form-control" id="sellinputValue" placeholder="Amount">
+                                      </div>
+                                  </div>
+                                </div>
+                            </form>
+                            <span id="sellResult"></span>
+                          </div>
+                      </div>
+                    </div>
                 </div>
-                </div>
-               </div> 
-            </form>
-            <span id="buyResult"></span>
+                <!-- /md-8 -->
               </div>
-            </div>
-            </div>
-
-            <div class="col-md-6">
-
-            <div class="panel panel-default">
-              <div class="panel-heading">Sell</div>
-              <div class="panel-body">
-              <form class="form-inline">
-              <div class="form-group">
-                <div class="col-md-4">
-                  <select class="form-control sell-txn-value"></select>
-                </div>
-                <div class="col-md-8">
-                <label class="sr-only" for="sellinputValue">Amount</label>
-                <div class="input-group">
-                  <input type="number" class="form-control" id="sellinputValue" placeholder="Amount">
-                </div>
-                </div>
-               </div> 
-            </form>
-            <span id="sellResult"></span>
-              </div>
-            </div>
-
-            </div>
-            
-            </div> <!-- /md-8 -->
           </div>
         </div>
-      </div>`)
+      `)
       var optionBuy = "";
       $.each( data.buy, function( key, value ){
         buyTable += "<tr><th scope=\"row\"><figure class=\"currency-icon\"><img src=\"./images/"+key+"-logo.jpg\" /></figure><span>&nbsp;"+ key.toUpperCase()+ "</span></th><td class=\"buyrate\"><a href=\"#\">"+value+"</a></td></tr>"
