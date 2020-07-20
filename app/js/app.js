@@ -79,7 +79,7 @@ function getRate(params) {
 
       $.each( data.sell, function( key, value ){
         sellTable += "<tr><th scope=\"row\"><figure class=\"currency-icon\"><img src=\"./images/"+key+"-logo.jpg\" /></figure><span>&nbsp;"+ key.toUpperCase()+ "</span></th><td class=\"buyrate\">"+value+"</td></tr>"
-        optionBuy += "<option value=\" "+value+"\">"+ key.toUpperCase() +"</option>"
+        optionSell += "<option value=\" "+value+"\">"+ key.toUpperCase() +"</option>"
       });
 
       buyTable += "</tbody></table>"
@@ -89,7 +89,7 @@ function getRate(params) {
       $("#selltable").append(sellTable)
 
       $(".buy-txn-value").append(optionBuy)
-      $(".sell-txn-value").append(optionBuy)
+      $(".sell-txn-value").append(optionSell)
 
       $("#buyinputValue").keyup(buycalc);
       $(".buy-txn-value").change(buycalc);
