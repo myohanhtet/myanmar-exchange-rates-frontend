@@ -72,6 +72,7 @@ function getRate(params) {
         </div>
       `)
       var optionBuy = "";
+      var optionSell = "";
       $.each( data.buy, function( key, value ){
         buyTable += "<tr><th scope=\"row\"><figure class=\"currency-icon\"><img src=\"./images/"+key+"-logo.jpg\" /></figure><span>&nbsp;"+ key.toUpperCase()+ "</span></th><td class=\"buyrate\"><a href=\"#\">"+value+"</a></td></tr>"
         optionBuy += "<option value=\" "+value+"\">"+ key.toUpperCase() +"</option>"
