@@ -74,13 +74,17 @@ function getRate(params) {
       var optionBuy = "";
       var optionSell = "";
       $.each( data.buy, function( key, value ){
-        buyTable += "<tr><th scope=\"row\"><figure class=\"currency-icon\"><img src=\"./images/"+key+"-logo.jpg\" /></figure><span>&nbsp;"+ key.toUpperCase()+ "</span></th><td class=\"buyrate\"><a href=\"#\">"+value+"</a></td></tr>"
-        optionBuy += "<option value=\" "+value+"\">"+ key.toUpperCase() +"</option>"
+
+        buyTable += "<tr><th scope=\"row\"><figure class=\"currency-icon\"><img src=\"./images/"+key+"-logo.jpg\" /></figure><span>&nbsp;"+ key.toUpperCase()+ "</span></th><td class=\"buyrate\">"+value+"</td></tr>"
+        optionBuy += "<option value=\" "+ value +"\">"+ key.toUpperCase() +"</option>"
+
       });
 
       $.each( data.sell, function( key, value ){
+        
         sellTable += "<tr><th scope=\"row\"><figure class=\"currency-icon\"><img src=\"./images/"+key+"-logo.jpg\" /></figure><span>&nbsp;"+ key.toUpperCase()+ "</span></th><td class=\"buyrate\">"+value+"</td></tr>"
-        optionSell += "<option value=\" "+value+"\">"+ key.toUpperCase() +"</option>"
+        optionSell += "<option value=\" "+ value +"\">"+ key.toUpperCase() +"</option>"
+
       });
 
       buyTable += "</tbody></table>"
@@ -113,19 +117,14 @@ function buycalc() {
     let result =  parseFloat($('#buyinputValue').val(), 10) * parseFloat($(".buy-txn-value").val(), 10);
 
     let resultStr = isNaN(result) ? 0 : result
-
     $('#buyResult').html("<h1>"+ resultStr +"<small> MMK</small></h1>");
 }
-
 function sellcalc() {
-
   let result =  parseFloat($('#sellinputValue').val(), 10) * parseFloat($(".sell-txn-value").val(), 10);
 
   let resultStr = isNaN(result) ? 0 : result
 
   $('#sellResult').html("<h1>"+ resultStr +"<small> MMK</small></h1>");
-
-
 }
 
 
